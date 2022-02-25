@@ -74,7 +74,7 @@ export default function () {
         tags: { name: "APINAME--GET" },
     });
 
-    // Assert Response body 
+    // Assert Response body, return a boolean 
     const checkResp = check(response, {
         "response code is 200": (resp) => resp.status === 200,
         "content is present": (resp) => resp.body.includes(`${RESP_KEYWORD}`),
