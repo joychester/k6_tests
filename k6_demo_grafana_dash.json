@@ -1,25 +1,4 @@
 {
-  "__inputs": [],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.5.6"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -29,26 +8,28 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -75,7 +56,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -128,9 +109,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Request Per Second",
       "tooltip": {
         "shared": true,
@@ -139,81 +118,106 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 90
+              },
+              {
+                "color": "#EAB839",
+                "value": 95
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 8,
         "y": 0
       },
-      "hiddenSeries": false,
       "id": 4,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "7.5.6",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "AUcvogTnk"
+          },
           "groupBy": [
             {
               "params": [
@@ -246,69 +250,17 @@
                 "type": "mean"
               }
             ]
-          ],
-          "tags": [
-            {
-              "key": "scenario",
-              "operator": "=",
-              "value": "http_get_api"
-            }
           ]
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "Request Success%",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:745",
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:746",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -335,7 +287,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -382,9 +334,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Active Virtual Users",
       "tooltip": {
         "shared": true,
@@ -393,33 +343,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -427,11 +368,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -458,7 +394,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -601,9 +537,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "API Response Time",
       "tooltip": {
         "shared": true,
@@ -612,37 +546,27 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -687,7 +611,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -736,7 +660,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -781,7 +704,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -830,7 +753,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -875,7 +797,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -924,7 +846,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -969,7 +890,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1018,7 +939,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1063,7 +983,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1112,7 +1032,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1158,7 +1077,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1209,7 +1128,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1254,7 +1172,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1305,7 +1223,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1350,7 +1267,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1401,7 +1318,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1446,7 +1362,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1497,7 +1413,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1542,7 +1457,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "groupBy": [
@@ -1593,8 +1508,8 @@
       "type": "stat"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 27,
+  "refresh": "5s",
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1608,5 +1523,6 @@
   "timezone": "",
   "title": "k6_demo",
   "uid": "7fHiLEeMz",
-  "version": 7
+  "version": 3,
+  "weekStart": ""
 }
