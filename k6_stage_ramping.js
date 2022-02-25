@@ -66,6 +66,7 @@ export default function () {
         "content is present": (resp) => resp.body.includes(`${RESP_KEYWORD}`),
     });
 
+    successRate.add(checkResp);
     // Simulate think time 
     sleep(Math.random() * SLEEP_Duration);
 }
