@@ -31,7 +31,6 @@ export const options = {
             ],
             gracefulStop: "5s"
         },
-
     },
     thresholds: {
         http_req_duration: ['p(90) < 250'],
