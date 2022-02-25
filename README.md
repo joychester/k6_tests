@@ -10,3 +10,6 @@ Following are Simple Steps to run k6 tests on Windows, but linux or Mac OS platf
 - run the k6 test : k6 run --out influxdb=http://localhost:8086/myk6db k6_demo.js, this will create myk6db automatically
 - access Grafana by: http://localhost:3000/login
 - use admin/admin for username/pwd in grafana 
+
+sample screenshot for k6 test grafana dashboard:
+![](grafana_k6_dash.png)
