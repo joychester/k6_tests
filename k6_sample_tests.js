@@ -1,3 +1,4 @@
+import Logger from './logger.js';
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { Rate } from 'k6/metrics';
@@ -7,10 +8,10 @@ import PapaParse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 // or you can install it through npm install and load it from local disk
 //import PapaParse from '../node_modules/papaparse/papaparse.js';
 
-
 const SLEEP_DURATION = 0.2;
-const PROTOCOL = "https"
+const PROTOCOL = "https";
 const HOST_NAME = "test-api.k6.io";
+const logger = new Logger("DEBUG");
 
 //Define custom metrics
 let successRate = new Rate("check_success_rate");
@@ -47,7 +48,7 @@ const inputData = new SharedArray("ids and names", () => {
 
 //Init code
 export function setup() {
-    console.log("Init Testing..." + new Date().toLocaleString());
+    logger.printInfoMsg("Init Testing..." + new Date().toLocaleString())
     return Date.now();
 }
 
@@ -55,7 +56,7 @@ export function setup() {
 export default function()  {
 
     let rand_input = inputData[Math.floor(Math.random() * inputData.length)];
-    console.log(JSON.stringify(rand_input));
+    logger.printDebugMsg(JSON.stringify(rand_input));
 
     // Send out the API
     const response = http.get(`${PROTOCOL}://${HOST_NAME}/public/crocodiles/?format=json&id=${rand_input.id}&name=${rand_input.name}`, {
@@ -65,7 +66,7 @@ export default function()  {
         compression: "gzip, deflate, br",
         tags: {name: 'APINAME--GET'},
     });
-    console.log(response.url);
+    logger.printDebugMsg(response.url);
 
     // Assert the response
     const checkResp = check(response, { // can be a combination assertion
@@ -81,5 +82,5 @@ export default function()  {
 
 //TearDown code
 export function teardown(data) {
-    console.log(`Test duration: ${ Date.now()- data }ms`);
+    logger.printInfoMsg(`Test duration: ${ Date.now()- data }ms`);
 }
