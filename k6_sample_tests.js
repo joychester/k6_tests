@@ -48,7 +48,7 @@ const inputData = new SharedArray("ids and names", () => {
 
 //Init code
 export function setup() {
-    logger.printInfoMsg("Init Testing..." + new Date().toLocaleString())
+    logger.info("Init Testing..." + new Date().toLocaleString())
     return Date.now();
 }
 
@@ -56,7 +56,7 @@ export function setup() {
 export default function()  {
 
     let rand_input = inputData[Math.floor(Math.random() * inputData.length)];
-    logger.printDebugMsg(JSON.stringify(rand_input));
+    logger.debug(JSON.stringify(rand_input));
 
     // Send out the API
     const response = http.get(`${PROTOCOL}://${HOST_NAME}/public/crocodiles/?format=json&id=${rand_input.id}&name=${rand_input.name}`, {
@@ -66,7 +66,7 @@ export default function()  {
         compression: "gzip, deflate, br",
         tags: {name: 'APINAME--GET'},
     });
-    logger.printDebugMsg(response.url);
+    logger.debug(response.url);
 
     // Assert the response
     const checkResp = check(response, { // can be a combination assertion
@@ -82,5 +82,5 @@ export default function()  {
 
 //TearDown code
 export function teardown(data) {
-    logger.printInfoMsg(`Test duration: ${ Date.now()- data }ms`);
+    logger.info(`Test duration: ${ Date.now()- data }ms`);
 }
