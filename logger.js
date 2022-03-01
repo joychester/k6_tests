@@ -7,19 +7,19 @@ export default class Logger {
     }
 
     // always print to the console
-    printInfoMsg(infoMsg) {
+    info(infoMsg) {
         console.log(`${infoMsg}`)
     }
 
     // only print to the console if enable DEBUG level
-    printDebugMsg(debugMsg) {
+    debug(debugMsg) {
         if (this.loglevel.toUpperCase()  == "DEBUG") {
             console.log(`${debugMsg}`)
         }
     }
 
     // always print to the console
-    printErrorMsg(errMsg) {
+    error(errMsg) {
         console.error(`${errMsg}`)
     }
 }
