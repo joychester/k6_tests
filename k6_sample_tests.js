@@ -23,7 +23,7 @@ export let options = {
     scenarios:{
         http_get_api: {
             executor: 'constant-arrival-rate', // use open model instead of close model
-            rate: 1, // this means 3 RPS
+            rate: 3, // this means 3 RPS
             timeUnit:  '1s',
             duration: '1m',
             preAllocatedVUs: 5,
